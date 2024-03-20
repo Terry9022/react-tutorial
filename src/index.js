@@ -2,24 +2,35 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import "./index.css";
+const books = [
+  {
+    title: "Dog Man: The Scarlet Shedder",
+    author: "Dav Pilkey",
+    img: "./images/book-1.jpg",
+    id: 1,
+  },
+  {
+    author: "James Clear",
+    title: "Atomic Habits",
+    img: "https://images-na.ssl-images-amazon.com/images/I/81wgcld4wxL._AC_UL900_SR900,600_.jpg",
+    id: 2,
+  },
+];
 
 function BookList() {
   return (
     <section className="booklist">
-      <Book />
-      <Book />
-      <Book />
-      <Book />
+      {books.map((book) => {
+        return <Book key={book.id} {...book} />;
+      })}
     </section>
   );
 }
 
-const Book = () => {
-  const title = "Dog Man: The Scarlet Shedder";
-  const author = "Dav Pilkey";
+const Book = ({ author, title, img }) => {
   return (
     <article className="book">
-      <img src="./images/book-1.jpg" alt="Dog Man: The Scarlet Shedder" />
+      <img src={img} alt={title} />
       <h2>{title}</h2>
       <h4>{author}</h4>
     </article>
